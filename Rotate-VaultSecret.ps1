@@ -61,6 +61,12 @@ function New-RandomPassword {
     return -join $chars
 }
 
+# -Encoding UTF8 ajoute le BOM sous Windows PowerShell 5.1 mais pas sous PowerShell 7+, où
+# Excel (locale FR) lit alors les accents comme du Windows-1252 et les corrompt. On force le
+# BOM sur les deux versions — et "utf8BOM" n'existe même pas comme valeur valide pour -Encoding
+# sous Windows PowerShell 5.1, il faut donc bien passer par cette variable, pas la coder en dur.
+$fileEncoding = if ($PSVersionTable.PSVersion.Major -ge 6) { 'utf8BOM' } else { 'UTF8' }
+
 $result = [PSCustomObject]@{
     SecretName     = $SecretName
     SamAccountName = ""
@@ -94,7 +100,7 @@ try {
     $entry.EncryptedSecret = $encrypted
     $entry.LastRotated = $now
 
-    $vaultEntries | ConvertTo-Json -Depth 5 | Out-File $VaultJson -Encoding utf8BOM
+    $vaultEntries | ConvertTo-Json -Depth 5 | Out-File $VaultJson -Encoding $fileEncoding
 
     $result.LastRotated = $now
     $result.Status = "Success"
