@@ -137,7 +137,23 @@ Testé pour de vrai contre le lab (`svc-vault-test`) :
 
 ![Secret stocké avec succès](screenshots/vault-add-success.png)
 
-*(Get-VaultSecret.ps1 et Rotate-VaultSecret.ps1 à valider ensuite)*
+Retrait avec justification obligatoire — le secret est rendu en `SecureString`, jamais affiché
+en clair sur la console :
+
+```powershell
+.\Get-VaultSecret.ps1 -SecretName "svc-vault-test" -Reason "Test coffre-fort"
+```
+
+![Secret retiré avec justification](screenshots/vault-get-success.png)
+
+Le retrait est journalisé dans [`Vault_Checkout_Ledger.csv`](Vault_Checkout_Ledger.csv). Rotation
+ensuite — change réellement le mot de passe côté AD, pas seulement côté coffre-fort :
+
+```powershell
+.\Rotate-VaultSecret.ps1 -SecretName "svc-vault-test"
+```
+
+![Secret tourné, mot de passe AD changé](screenshots/vault-rotate-success.png)
 
 ### 🔐 Sécurité (volet coffre-fort)
 
