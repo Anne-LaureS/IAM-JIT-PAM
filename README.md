@@ -111,7 +111,7 @@ AD — pas seulement côté coffre-fort.
 D'abord créer un compte de service de test dédié (jamais un compte réel) :
 
 ```powershell
-New-ADUser -Name "svc-vault-test" -SamAccountName "svc-vault-test" -Server DC1.society.local -Credential (Get-Credential) -Enabled $true -AccountPassword (Read-Host -AsSecureString -Prompt "Mot de passe initial")
+New-ADUser -Name "svc-vault-test" -SamAccountName "svc-vault-test" -Path "OU=Utilisateurs-Test,DC=society,DC=local" -Server DC1.society.local -Credential (Get-Credential) -Enabled $true -AccountPassword (Read-Host -AsSecureString -Prompt "Mot de passe initial")
 ```
 
 Puis le cycle de vie complet du secret :
@@ -129,7 +129,15 @@ Puis le cycle de vie complet du secret :
 
 ### 📊 Exemple de bout en bout
 
-*(à compléter avec les résultats réels une fois les scripts exécutés contre le lab)*
+Testé pour de vrai contre le lab (`svc-vault-test`) :
+
+```powershell
+.\Add-VaultSecret.ps1 -SecretName "svc-vault-test" -SamAccountName "svc-vault-test" -Password (Read-Host -AsSecureString -Prompt "Mot de passe")
+```
+
+![Secret stocké avec succès](screenshots/vault-add-success.png)
+
+*(Get-VaultSecret.ps1 et Rotate-VaultSecret.ps1 à valider ensuite)*
 
 ### 🔐 Sécurité (volet coffre-fort)
 
