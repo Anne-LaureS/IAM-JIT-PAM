@@ -51,7 +51,26 @@ dehors d'un groupe de test dédié.
 
 ## 📊 Exemple de bout en bout
 
-*(à compléter avec les résultats réels une fois les scripts exécutés contre le lab)*
+Testé pour de vrai contre le lab (`jdupont` → `PAM-Privileged-Test`, 2 minutes) :
+
+```powershell
+.\Grant-JitAccess.ps1 -SamAccountName "jdupont" -GroupName "PAM-Privileged-Test" -DurationMinutes 2 -Reason "Test JIT"
+```
+
+![Accès JIT accordé](screenshots/grant-success.png)
+
+Un `Revoke-ExpiredJitAccess.ps1` lancé avant l'expiration confirme correctement qu'il n'y a
+rien à faire (`Toujours actifs : 1`, `Accès révoqués : 0`) — il ne révoque jamais un accès en
+avance. Une fois l'expiration passée :
+
+```powershell
+.\Revoke-ExpiredJitAccess.ps1
+```
+
+![Accès JIT révoqué à l'expiration](screenshots/revoke-success.png)
+
+`jdupont` a bien perdu l'appartenance à `PAM-Privileged-Test`, et le registre marque la ligne
+`Expired`.
 
 ## 🔐 Sécurité & précautions
 
