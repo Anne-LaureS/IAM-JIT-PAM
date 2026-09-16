@@ -69,8 +69,8 @@ avance. Une fois l'expiration passée :
 
 ![Accès JIT révoqué à l'expiration](screenshots/revoke-success.png)
 
-`jdupont` a bien perdu l'appartenance à `PAM-Privileged-Test`, et le registre marque la ligne
-`Expired`.
+`jdupont` a bien perdu l'appartenance à `PAM-Privileged-Test`, et le registre
+([`JIT_Access_Ledger.csv`](JIT_Access_Ledger.csv)) marque la ligne `Expired`.
 
 ## 🔐 Sécurité & précautions
 
