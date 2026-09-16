@@ -17,7 +17,10 @@ révocation à exécuter périodiquement — une pratique réelle et courante en
 l'adoption d'un outil PAM du marché (CyberArk, BeyondTrust...).
 
 Testé contre le même lab Active Directory (Windows Server 2022, `DC1.society.local`) que le
-reste du portfolio.
+reste du portfolio — géré au quotidien par
+[IAM-JML-Lifecycle](https://github.com/Anne-LaureS/IAM-JML-Lifecycle) pour l'appartenance
+standard, ce repo pour l'appartenance temporaire à privilège. Phase 4 (PAM) de
+[IAM-Governance-Roadmap](https://github.com/Anne-LaureS/IAM-Governance-Roadmap).
 
 ## ⚙️ Les scripts
 
