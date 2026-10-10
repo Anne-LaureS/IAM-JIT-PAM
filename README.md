@@ -177,3 +177,10 @@ ensuite — change réellement le mot de passe côté AD, pas seulement côté c
   portfolio — Windows PowerShell 5.1 lit mal les accents sans ce marqueur en tête de fichier.
 - **Ne jamais utiliser ces scripts (JIT ou coffre-fort) sur Domain Admins ou un compte/groupe
   sensible réel** en dehors d'un périmètre de test dédié.
+
+---
+
+## 📜 Licence
+
+Publié sous licence [MIT](LICENSE) © 2026 Anne-LaureS : réutilisation libre, à condition de conserver la
+mention de copyright. Fourni « tel quel », sans garantie.
