@@ -4,6 +4,7 @@
 ![ActiveDirectory](https://img.shields.io/badge/Active%20Directory-0078D4?style=for-the-badge&logo=windows&logoColor=white)
 ![PAM](https://img.shields.io/badge/PAM-Just--In--Time%20Access-0d1117?style=for-the-badge)
 ![Vault](https://img.shields.io/badge/PAM-Secrets%20Vault-0d1117?style=for-the-badge)
+[![Licence MIT](https://img.shields.io/badge/Licence-MIT-0d1117?style=for-the-badge)](LICENSE)
 
 Deux volets PAM (Privileged Access Management) du portfolio : l'accès **juste-à-temps** (JIT —
 une appartenance à un groupe à privilège accordée pour une durée limitée, révoquée
